@@ -2,7 +2,7 @@ package Lingua::KO::Munja;
 require Exporter;
 @ISA = qw(Exporter);
 @EXPORT_OK = qw/roman2hangul hangul2roman/;
-%EXPORT_TAGS => (
+%EXPORT_TAGS = (
     all => \@EXPORT_OK,
 );
 use warnings;
