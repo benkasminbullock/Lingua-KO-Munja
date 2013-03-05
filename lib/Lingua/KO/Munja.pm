@@ -28,8 +28,6 @@ my @initial = qw(
 
 my $initial_re = makearegex (@initial);
 
-print "@initial\n";
-
 my %initial = a2h (@initial);
 
 my @peak = qw(
