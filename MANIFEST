@@ -1,6 +1,0 @@
-lib/Lingua/KO/Munja.pm
-Makefile.PL
-MANIFEST			This list of files
-t/Lingua-KO-Munja.t
-t/romanize-korean.t
-makeitfile

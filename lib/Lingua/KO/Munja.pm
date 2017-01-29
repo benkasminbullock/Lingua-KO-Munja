@@ -7,24 +7,22 @@ require Exporter;
 );
 use warnings;
 use strict;
-our $VERSION = 0.03;
+our $VERSION = '0.06';
 use Convert::Moji 'make_regex';
 
 my $verbose;
 
 sub makearegex
 {
-my @possibles = @_;
-@possibles = map {$_ =~ s/^-$//; $_} @possibles;
-make_regex (@possibles);
+    my @possibles = @_;
+    @possibles = map {$_ =~ s/^-$//; $_} @possibles;
+    make_regex (@possibles);
 }
 
 my @initial = qw(
     g   kk  n   d   tt  r   m   b   pp  s   ss  -   j   jj
     ch  k   t   p   h
 );
-
-
 
 my $initial_re = makearegex (@initial);
 
@@ -40,7 +38,7 @@ my $peak_re = makearegex (@peak);
 my %peak = a2h (@peak);
 
 my @final = qw(
-    -   g   kk  ks  n   nj  nh  d   r   lg  lm  lb  ls  lt
+    -   g   kk  ks  n   nj  nh  d   l   lg  lm  lb  ls  lt
     lp  lh  m   b   ps  s   ss  ng  j   c   k   t   p   h
 );
 
@@ -57,9 +55,9 @@ sub hangul
         }
     }
     if ($verbose) {
-    print "Initial = $initial, peak = $peak, final = $final\n";
-    print "Initial = $initial{$initial}, peak = $peak{$peak}, final = $final{$final}\n";
-}
+	print "Initial = $initial, peak = $peak, final = $final\n";
+	print "Initial = $initial{$initial}, peak = $peak{$peak}, final = $final{$final}\n";
+    }
     my $x = (($initial{$initial} * 21) + $peak{$peak}) * 28 + $final{$final};
     my $hangul = chr (0xAC00 + $x);
     return $hangul;
@@ -119,69 +117,12 @@ sub romanize
 sub hangul2roman
 {
     my ($hangul) = @_;
-#    print "$hangul\n";
     $hangul =~ s/(\p{Hangul})/romanize ($1)/ge;
     $hangul =~ s/-//g;
-#    print "$hangul\n";
     return $hangul;
 }
 
 1;
 
 __END__
-
-=encoding utf-8
-
-=head1 NAME
-
-Lingua::KO::Munja - Korean letter conversion
-
-=head1 SYNOPSIS
-
-    use Lingua::KO::Munja qw/roman2hangul hangul2roman/;
-    my $roman = hangul2roman ('유사쿠');
-    my $hangul = roman2hangul ('yusaku');
-
-=head1 DESCRIPTION
-
-Inputs and outputs are in Perl's Unicode formulation.
-
-This is a companion of L<Lingua::JA::Moji>.
-
-=head1 FUNCTIONS
-
-=head2 roman2hangul
-
-    my $hangul = roman2hangul ('munja');
-
-Convert romanized Korean to hangul.
-
-=head2 hangul2roman
-
-    my $roman = hangul2roman ('문자');
-
-Convert hangul to romanized Korean.
-
-=head1 BUGS
-
-=over
-
-=item Module author knows nothing about Korean
-
-=back
-
-=head1 AUTHOR
-
-Ben Bullock, <bkb@cpan.org>
-
-=head1 COPYRIGHT
-
-Portions of this are taken from L<Lingua::KO::Romanize::Hangul>,
-version 0.20, by Yusuke Kawasaki, Copyright (c) 1998-2008 Yusuke
-Kawasaki.
-
-The rest is by Ben Bullock.
-
-This program may be copied, used, modified and redistributed under the
-same terms as Perl itself.
 

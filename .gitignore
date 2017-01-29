@@ -1,2 +1,5 @@
 *.tar.gz
 Makefile
+README
+lib/Lingua/KO/Munja.pod
+examples/*-out.txt

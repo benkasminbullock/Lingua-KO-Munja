@@ -4,4 +4,5 @@ use strict;
 use Getopt::Long;
 use Perl::Build;
 perl_build (
+    make_pod => './make-pod.pl',
 );

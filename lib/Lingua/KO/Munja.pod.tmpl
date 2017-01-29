@@ -1,0 +1,79 @@
+[% start_year=2011 %]
+[% MACRO example(file) BLOCK %]
+[%- pl = file _ ".pl" -%]
+[%- out = file _ "-out.txt" -%]
+[% INCLUDE $pl | xtidy %]
+
+produces output
+
+[% INCLUDE $out | xtidy %]
+
+(This example is included as L<F<[% pl %]>|https://api.metacpan.org/source/BKB/[% info.name %]-[% info.version %]/examples/[% pl %]> in the distribution.)
+[% END %]
+=encoding utf-8
+
+=head1 VERSION
+
+This documents [% info.colon %] version [% info.version %]
+corresponding to git commit L<[% commit.commit %]|[% info.repo
+%]/commit/[% commit.commit %]> released on [% commit.date %].
+
+=head1 NAME
+
+Lingua::KO::Munja - Korean letter conversion
+
+=head1 SYNOPSIS
+
+[% example("synopsis") %]
+
+=head1 DESCRIPTION
+
+Inputs and outputs are in Perl's Unicode formulation.
+
+This is a companion of L<Lingua::JA::Moji>.
+
+=head1 FUNCTIONS
+
+=head2 roman2hangul
+
+    my $hangul = roman2hangul ('munja');
+
+Convert romanized Korean to hangul.
+
+=head2 hangul2roman
+
+    my $roman = hangul2roman ('문자');
+
+Convert hangul to romanized Korean.
+
+=head1 EXTENDED EXAMPLES
+
+[% example("kanji2hanja") %]
+
+=head1 SEE ALSO
+
+=head2 About Korean romanisation
+
+=over
+
+=item L<Revised Romanization of Korean|https://en.wikipedia.org/wiki/Revised_Romanization_of_Korean>
+
+Wikipedia article on the official form of Korean romanisation.
+
+=back
+
+=head1 AUTHOR
+
+Ben Bullock, <bkb@cpan.org>
+
+=head1 COPYRIGHT AND LICENCE
+
+Portions of this are taken from L<Lingua::KO::Romanize::Hangul>,
+version 0.20, by Yusuke Kawasaki, Copyright (c) 1998-2008 Yusuke
+Kawasaki.
+
+The rest is by Ben Bullock.
+
+This program may be copied, used, modified and redistributed under the
+same terms as Perl itself.
+
