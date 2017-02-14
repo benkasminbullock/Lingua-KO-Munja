@@ -1,7 +1,7 @@
 use warnings;
 use strict;
 use Lingua::KO::Munja qw/roman2hangul hangul2roman/;
-use Test::More tests => 9;
+use Test::More;
 use utf8;
 binmode STDOUT, ":utf8";
 binmode Test::More->builder->output, ":utf8";
@@ -24,5 +24,4 @@ for my $input (keys %r) {
 
 my $my = '마츠다 유사쿠';
 ok (roman2hangul (hangul2roman ($my)) eq $my, "$my round trip");
-
-
+done_testing ();

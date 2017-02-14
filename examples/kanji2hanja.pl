@@ -6,7 +6,7 @@ use Lingua::KO::Munja ':all';
 binmode STDOUT, ":utf8";
 my $k = parse_kanjidic ('/home/ben/data/edrdg/kanjidic');
 my @o = kanjidic_order ($k);
-my $max = 100;
+my $max = 10;
 for my $kanji (@o[0..$max]) {
     my $entry = $k->{$kanji};
     my $korean = $entry->{W};
