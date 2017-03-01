@@ -13,8 +13,6 @@ for my $kanji (@o[0..$max]) {
     if (! $korean) {
 	next;
     }
-    for my $w (@$korean) {
-	my $hangul = roman2hangul ($w);
-	print "$kanji $hangul\n";
-    }
+    my @hangul = map {roman2hangul ($_)} @$korean;
+    print "$kanji: @hangul\n";
 }
