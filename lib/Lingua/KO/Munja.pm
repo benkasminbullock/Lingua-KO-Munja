@@ -1,13 +1,13 @@
 package Lingua::KO::Munja;
-require Exporter;
-@ISA = qw(Exporter);
-@EXPORT_OK = qw/roman2hangul hangul2roman/;
-%EXPORT_TAGS = (
-    all => \@EXPORT_OK,
-);
 use warnings;
 use strict;
-our $VERSION = '0.06';
+require Exporter;
+our @ISA = qw(Exporter);
+our @EXPORT_OK = qw/roman2hangul hangul2roman/;
+our %EXPORT_TAGS = (
+    all => \@EXPORT_OK,
+);
+our $VERSION = '0.07';
 use Convert::Moji 'make_regex';
 
 my $verbose;
@@ -92,7 +92,11 @@ sub roman2hangul
     return $input;
 }
 
-sub a2h {
+# Given an array, make a hash with the elements as keys and a unique
+# number as values.
+
+sub a2h
+{
     my @array = @_;
     my %hash;
     my $count = 0;
@@ -123,6 +127,4 @@ sub hangul2roman
 }
 
 1;
-
-__END__
 

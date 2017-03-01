@@ -52,6 +52,20 @@ Convert hangul to romanized Korean.
 
 =head1 SEE ALSO
 
+=head2 Other CPAN modules
+
+=over
+
+=item L<Lingua::JA::Moji/kana2hangul>
+
+This converts Japanese kana into hangul.
+
+=item L<Lingua::KO::Romanize::Hangul>
+
+This romanises Hangul.
+
+=back
+
 =head2 About Korean romanisation
 
 =over
@@ -59,6 +73,22 @@ Convert hangul to romanized Korean.
 =item L<Revised Romanization of Korean|https://en.wikipedia.org/wiki/Revised_Romanization_of_Korean>
 
 Wikipedia article on the official form of Korean romanisation.
+
+=back
+
+=head1 EXPORTS
+
+Nothing is exported by default. All the functions can be exported using the tag C<:all>.
+
+    use Lingua::KO::Munja ':all';
+
+=head1 DEPENDENCIES
+
+=over
+
+=item L<Convert::Moji>
+
+Convert::Moji is used for making the conversions between alphabets.
 
 =back
 
