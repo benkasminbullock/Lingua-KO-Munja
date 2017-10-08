@@ -31,7 +31,11 @@ my @tgz = `tar tfz $distrofile`;
 my %badfiles;
 my %files;
 for (@tgz) {
-    if (/(\.tmpl|-out\.txt|(?:make-pod|build)\.pl)|makeitfile$/) {
+    if (m!(\.tmpl|-out\.txt|(?:make-pod|build)\.pl)|makeitfile$!) {
+	$files{$1} = 1;
+	$badfiles{$1} = 1;
+    }
+    if (m!((?:^|/)?xt/.*)$!) {
 	$files{$1} = 1;
 	$badfiles{$1} = 1;
     }
@@ -42,4 +46,9 @@ ok (! $files{"make-pod.pl"}, "no make-pod.pl in distro");
 ok (! $files{"build.pl"}, "no build.pl in distro");
 ok (! $files{"makeitfile"}, "no makeitfile (local makefile) in distro");
 ok (keys %badfiles == 0, "no bad files");
+if (keys %badfiles) {
+    for my $k (keys %badfiles) {
+	note ("Bad file $k");
+    }
+}
 done_testing ();
