@@ -1,15 +1,15 @@
-[% start_year=2011 %]
-[% MACRO example(file) BLOCK %]
+[%- start_year=2011 %]
+[%- MACRO example(file) BLOCK %]
 [%- pl = file _ ".pl" -%]
 [%- out = file _ "-out.txt" -%]
-[% INCLUDE $pl | xtidy %]
+[%- INCLUDE $pl | xtidy %]
 
 produces output
 
-[% INCLUDE $out | xtidy %]
+[%- INCLUDE $out | xtidy %]
 
 (This example is included as L<F<[% pl %]>|https://fastapi.metacpan.org/source/BKB/[% info.name %]-[% info.version %]/examples/[% pl %]> in the distribution.)
-[% END %]
+[%- END %]
 =encoding utf-8
 
 =head1 NAME
@@ -106,4 +106,3 @@ The rest is by Ben Bullock.
 
 This program may be copied, used, modified and redistributed under the
 same terms as Perl itself.
-
